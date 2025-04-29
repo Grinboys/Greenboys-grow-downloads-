@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🟢 GreenBoys Downloader</title>
+
+  <!-- تعليمات PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00796b">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #e0f7fa;
+      padding: 30px;
+    }
+    h1 {
+      color: #00796b;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    select, button {
+      padding: 10px;
+      margin: 10px;
+      border: none;
+      background-color: #00796b;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .log {
+      background: #fff;
+      padding: 15px;
+      white-space: pre-wrap;
+      border-radius: 5px;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-top: 20px;
+      text-align: dir;
+    }
+  </style>
+</head>
+<body>
+  <h1>🟢 GreenBoys YouTube Downloader</h1>
+  <input type="text" id="url" placeholder="أدخل رابط يوتيوب (فيديو / قائمة)"/>
+  <select id="format">
+    <option value="bestvideo+bestaudio">MP4 - أفضل جودة</option>
+    <option value="bestvideo[ext=webm]+bestaudio">WebM - عالية الجودة</option>
+    <option value="worstvideo[ext=3gp]+worstaudio">3GP - منخفضة الجودة</option>
+    <option value="bestaudio[ext=m4a]">صوت فقط (M4A)</option>
+    <option value="bestaudio[ext=mp3]">صوت فقط (MP3)</option>
+  </select>
+  <button onclick="download()">⬇️ تنزيل</button>
+  <div class="log" id="log">الحالة ستظهر هنا...</div>
+
+  <script>
+    function download() {
+      const url = document.getElementById("url").value;
+      const format = document.getElementById("format").value;
+      const log = document.getElementById("log");
+
+      if (!url) {
+        log.textContent = "❌ الرجاء إدخال رابط صحيح";
+        return;
+      }
+
+      log.textContent = "🔄 جاري الاتصال بالخادم المحلي...";
+
+      fetch(`http://localhost:3000/download?url=${encodeURIComponent(url)}&format=${encodeURIComponent(format)}`)
+        .then(res => res.text())
+        .then(data => log.innerHTML = data)
+        .catch(err => log.innerHTML = "⚠️ خطأ في الاتصال.<br>تأكد من تشغيل الخادم.");
+    }
+  </script>
+</body>
+</html>
