@@ -1,7 +1,7 @@
 {
   "name": "GreenBoys Downloader",
   "short_name": "GreenBoys",
-  "description": "تطبيق تنزيل فيديوهات من YouTube بصيغ متعددة وبدقائق قليلة.",
+  "description": "تطبيق تنزيل فيديوهات YouTube بدقة عالية.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#e0f7fa",
@@ -18,6 +18,33 @@
       "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
+    }
+  ],
+  "id": "com.greenboys.downloader",
+  "launch_handler": {
+    "url": "/"
+  },
+  "screenshots": [
+    {
+      "src": "https://via.placeholder.com/800x600?text=Screenshot+1",
+      "sizes": "800x600",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/800x600?text=Screenshot+2",
+      "sizes": "800x600",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["productivity"],
+  "dir": "ltr",
+  "iarc_rating_id": "USK-2023-00000000",
+  "lang": "ar",
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://grinboys.github.io/GreenBoys/"
     }
   ]
 }
